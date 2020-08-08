@@ -13,6 +13,10 @@ app.use(ejsLayouts);
 app.use(express.static('public')) 
 
 // GET - main index of site
+// pull pokemon from API via axios request axios.get()
+// await the response and render teh index.ejs file
+// with a param of an object with the key pokemon and a value
+// that calls pokemon.slice() on the response.data.reesults
 app.get('/', (req, res) => {
   let pokemonUrl = 'http://pokeapi.co/api/v2/pokemon/?limit=151>';
   // Use request to call the API
