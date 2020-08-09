@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var db = require('../models');
+const express = require('express');
+const router = express.Router();
+const db = require('../models');
 const axios = require('axios');
 
 
@@ -39,6 +39,20 @@ router.get('/:id', async (req, res) => {
     res.render('show', {pokemon: pokemon})
   }).catch(err => {
     console.log(err);
+  })
+})
+
+router.get('/delete/:id', async (req, res) => {
+  let pokeID = req.params.id;
+  await db.pokemon.destroy({
+    where: {
+      name: pokeID.toString()
+    }
+  }).then(p => {
+    console.log('destroyed: ', pokeID);
+    res.redirect('/');
+  }).catch(err => {
+    console.log('error occurred : ', err);
   })
 })
 

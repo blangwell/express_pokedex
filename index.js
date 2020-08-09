@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const axios = require('axios'); 
 const ejsLayouts = require('express-ejs-layouts');
-const pokemon = require('./models/pokemon');
 const app = express();
 const router = express.Router();  
 const port = process.env.PORT || 3000;
@@ -30,7 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // Imports all routes from the pokemon routes file
-// this is middleware that allows us to render from the routes dir
+// this is middleware that allows us to render pokemon from the routes dir
 app.use('/pokemon', require('./routes/pokemon'));
 
 

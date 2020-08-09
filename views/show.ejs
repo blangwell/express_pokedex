@@ -18,6 +18,11 @@
 <% }) %>
 </ul>
 </div>
+<!-- delete pokemon button form -->
+<form method="GET" action="/pokemon/delete/<%= pokemon.name %>">
+    <input hidden type="text" name="name" value="<%= pokemon.name %>">
+    <button class="btn btn-primary blue darken-2" type="submit">Delete from Favorites</button>
+  </form>
 
 <!-- base stat for loop -->
 <!-- cant use DOM in node. document is only browser side! -->
