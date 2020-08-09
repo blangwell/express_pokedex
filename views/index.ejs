@@ -4,7 +4,13 @@
     <a href="/pokemon">Favorites</a>
   </p>
 
-  <% pokemon.forEach(function(pokemon) { %>
+  <!-- for each rendered pokemon from index.js app.get home route -->
+  <!-- attach a form with a method of post to /pokemon -->
+  <!-- submit buttons should POST pokemon clicked to favorite  -->
+  
+  <!-- at this point clicking add to favorites redirects us to /pokemon-->
+  <!-- with raw object data of {'name': 'bulbosaur'}-->
+  <% pokemon.forEach(pokemon => { %>
     <div class="well">
       <h2><%= pokemon.name %></h2>
       <form method="POST" action="/pokemon">

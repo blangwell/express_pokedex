@@ -16,7 +16,7 @@ app.use(express.static('public'))
 // pull pokemon from API via axios request axios.get()
 // await the response and render teh index.ejs file
 // with a param of an object with the key pokemon and a value
-// that calls pokemon.slice() on the response.data.reesults
+// that calls pokemon.slice() on the array returned from response.data.results
 app.get('/', (req, res) => {
   let pokemonUrl = 'http://pokeapi.co/api/v2/pokemon/?limit=151>';
   // Use request to call the API
@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
 });
 
 // Imports all routes from the pokemon routes file
+// this is middleware that allows us to render from the routes dir
 app.use('/pokemon', require('./routes/pokemon'));
 
 const server = app.listen(port, () => {
