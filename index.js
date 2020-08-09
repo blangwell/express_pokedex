@@ -41,6 +41,10 @@ const server = app.listen(port, () => {
 module.exports = server;
 
 // WHY DONT I NEED THIS CODE???
+// i dont need this code because all these routes are handled
+// by the pokemon.js file. when I call 
+// app.use('/pokemon', require('./routes.pokemon'))
+// I am saying use all the routes in that pokemon.js file
 // acquire this data for me from this page
 // only pulling from specific pokemon clicked on
 // router.get('/pokemon', (req, res) => {

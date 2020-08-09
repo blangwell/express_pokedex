@@ -30,7 +30,19 @@ router.post('/', async (req, res) => {
 });
 
 // i need more explaination here 
-router.get('/:name')
+router.get('/:id', async (req, res) => {
+  // to access /:name
+  let pokeID = req.params.id;
+  // const getPokemon = await db.pokemon.findAll();
+  let pokeURL = `http://pokeapi.co/api/v2/pokemon/${pokeID}`
+  axios.get(pokeURL).then(response => {
+    let pokemon = response.data.name;
+    console.log(pokemon); // this logs successfully!
+    res.render('show', {pokemon: pokemon})
+  }).catch(err => {
+    console.log(err);
+  })
+})
 
 
 module.exports = router;
