@@ -1,8 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@font-face { font-family: 'pokemon'; src: url('./PokemonSolid.ttf')
+}
+
 body {
     background-color: whitesmoke;
+    font-family: 'Roboto';
 }
 
 #view-pokemon {
     border: 2px solid black;
     text-align: center;
+}
+
+#pokemon-name {
+    font-family: 'pokemon';
+    color: yellow;
+    -webkit-text-stroke: 4px darkblue;
+    text-shadow: -3px 4px 4px black;
+}
+
+.show-heading {
+    color: darkblue;
+    font-family: 'Russo One', sans-serif;
+    
 }
