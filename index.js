@@ -33,13 +33,22 @@ app.get('/', (req, res) => {
 // this is middleware that allows us to render from the routes dir
 app.use('/pokemon', require('./routes/pokemon'));
 
-router.get('/pokemon', (req, res) => {
-  // let pokemon = 
-  res.render('pokemon', {pokemon: pokemon.name})
-})
 
 const server = app.listen(port, () => {
   console.log(`Server is running on ${port}`);
 });
 
 module.exports = server;
+
+// WHY DONT I NEED THIS CODE???
+// acquire this data for me from this page
+// only pulling from specific pokemon clicked on
+// router.get('/pokemon', (req, res) => {
+//   let pokemon = res.data.results;
+//   res.render('index', {pokemon: pokemon.name});
+// })
+
+// router.post('/pokemon', (req, res) => {
+//   let pokemon = res.data.results;
+//   res.render('show', {pokemon: pokemon.name})
+// })

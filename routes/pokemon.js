@@ -1,19 +1,36 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../models');
+const axios = require('axios');
+// const pokemon = require('../models/pokemon');
 
 
 // GET /pokemon - return a page with favorited Pokemon
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   // TODO: Get all records from the DB and render to view
   // res.render renders pokemon.ejs route
-  res.render('pokemon');
+  // await models to be required, then pokemon model to be required
+  // transitioning from api data to db data
+  const getPokemon = await db.pokemon.findAll();
+  res.render('favorites', {pokemon: getPokemon});
 });
 
 // POST /pokemon - receive the name of a pokemon and add it to the database
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   // TODO: Get form data and add a new record to DB
-  res.send(req.body);
+  // post the data we GET from index to the pokemon database
+  await db.pokemon.findOrCreate({
+    where: {
+      name: req.body.name
+    }
+  }).then(p => {
+    console.log('created: ', p.name)
+  })
+  res.redirect('/pokemon')
 });
+
+// i need more explaination here 
+router.get('/:name')
+
 
 module.exports = router;
