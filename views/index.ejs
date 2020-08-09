@@ -9,11 +9,11 @@
   
   <!-- at this point clicking add to favorites redirects us to /pokemon-->
   <!-- with raw object data of {'name': 'bulbosaur'} or whichever pokemon was clicked-->
-  <% pokemon.forEach(pokemon => { %>
+  <% pokemon.forEach(p => { %>
     <div class="well">
-      <h2><%= pokemon.name %></h2>
+      <h3><%= p.name %></h3>
       <form method="POST" action="/pokemon">
-        <input hidden type="text" name="name" value="<%= pokemon.name %>">
+        <input hidden type="text" name="name" value="<%= p.name %>">
         <button class="btn btn-primary blue darken-2" type="submit">Add to Favorite Pokemon</button>
       </form>
     </div>

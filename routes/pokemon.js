@@ -35,7 +35,6 @@ router.get('/:id', async (req, res) => {
   let pokeURL = `http://pokeapi.co/api/v2/pokemon/${pokeID}`
   axios.get(pokeURL).then(response => {
     let pokemon = response.data;
-    console.log(pokemon); // this logs successfully!
     res.render('show', {pokemon: pokemon})
   }).catch(err => {
     console.log(err);
