@@ -2,13 +2,11 @@ var express = require('express');
 var router = express.Router();
 var db = require('../models');
 const axios = require('axios');
-// const pokemon = require('../models/pokemon');
 
 
 // GET /pokemon - return a page with favorited Pokemon
 router.get('/', async (req, res) => {
   // TODO: Get all records from the DB and render to view
-  // res.render renders pokemon.ejs route
   // await models to be required, then pokemon model to be required
   // transitioning from api data to db data
   const getPokemon = await db.pokemon.findAll();

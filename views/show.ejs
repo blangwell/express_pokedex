@@ -1,12 +1,16 @@
 <div id="view-pokemon">
-<h1 id="pokemon-name"><%= pokemon.name %></h1>
+<h1 class="pokemon-font"><%= pokemon.name %></h1>
 <h6 class="show-heading" id="pokemon-type"><%= pokemon.types[0].type.name %> type</h6>
 <img src="<%= pokemon.sprites.front_default%>" alt="pokemon sprite" width="200" height="200" id="img">
+
 <h4 class="show-heading">Abilities</h4>
+
 <% for (let i = 0; i < pokemon.abilities.length; i++) { %>
     <p><%=pokemon.abilities[i].ability.name.toUpperCase()%></p>
 <% } %>
+
 <h4 class="show-heading">Base Stats</h4>
+
 <% let stats = pokemon.stats[0] %>
 <ul id="base-stats">
 <% pokemon.stats.forEach(s => { %>

@@ -6,6 +6,7 @@
 body {
     background-color: whitesmoke;
     font-family: 'Roboto';
+    text-align: center;
 }
 
 #view-pokemon {
@@ -13,7 +14,7 @@ body {
     text-align: center;
 }
 
-#pokemon-name {
+.pokemon-font {
     font-family: 'pokemon';
     color: yellow;
     -webkit-text-stroke: 4px darkblue;
@@ -24,4 +25,8 @@ body {
     color: darkblue;
     font-family: 'Russo One', sans-serif;
     
+}
+
+.favorite-entry {
+    color: darkblue;
 }

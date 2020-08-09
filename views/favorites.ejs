@@ -1,6 +1,8 @@
+<h1 class="pokemon-font">Favorite Pokemon</h1>
 <% pokemon.forEach(p => { %>
     <div>
         <!-- this is whats being displayed on the next page -->
-        <a href="/pokemon/<%=p.name%>"><h1><%=p.name%></h1></a>
+        <a href="/pokemon/<%=p.name%>" class="favorite-entry"><h4><%=p.name%></h4></a>
     </div>
 <% }) %>    
+<!-- add delete button in forEach loop -->
