@@ -5,5 +5,13 @@
 <% for (let i = 0; i < pokemon.abilities.length; i++) { %>
     <p><%=pokemon.abilities[i].ability.name%></p>
 <% } %>
+<h4>Base Stats</h4>
+<% let stats = pokemon.stats[0] %>
+<p><strong><%= stats.stat.name.toUpperCase() %> :</strong>  <%= stats.base_stat %></p>
 </div>
+
+<!-- base stat for loop -->
+<% pokemon.stats.forEach(s => { %>
+    <p><%= s.stat.name.toUpperCase() %>: <%= s.base_stat %></p>
+<% }) %>
 <!-- cant use DOM in node. document is only browser side! -->
