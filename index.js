@@ -21,6 +21,8 @@ app.use(methodOverride('_method'))
 // await the response and render the index.ejs file
 // with a param of an object with the key pokemon and a value
 // that calls pokemon.slice() on the array returned from response.data.results
+
+// WE DONT NEED TO USE ASYNC/AWAIT IN CONJUNCTION WITH .THEN()
 app.get('/', (req, res) => {
   let pokemonUrl = 'http://pokeapi.co/api/v2/pokemon/?limit=151>';
   // Use request to call the API

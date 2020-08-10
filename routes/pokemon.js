@@ -13,10 +13,12 @@ router.get('/', async (req, res) => {
 });
 
 // POST /pokemon - receive the name of a pokemon and add it to the database
-router.post('/', async (req, res) => {
+
+// WE DONT NEED TO USE ASYNC/AWAIT IN CONJUNCTION WITH .THEN()
+router.post('/', (req, res) => {
   // TODO: Get form data and add a new record to DB
   // post the data we GET from index to the pokemon database
-  await db.pokemon.findOrCreate({
+  db.pokemon.findOrCreate({
     where: {
       name: req.body.name
     }
@@ -26,7 +28,7 @@ router.post('/', async (req, res) => {
   res.redirect('/pokemon')
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', (req, res) => {
   // to access the parameters at /:id
   let pokeID = req.params.id;
   // const getPokemon = await db.pokemon.findAll();
@@ -40,8 +42,8 @@ router.get('/:id', async (req, res) => {
 })
 
 // DELETE ROUTE
-router.delete('/:id', async (req, res) => {
-  await db.pokemon.destroy({
+router.delete('/:id', (req, res) => {
+   db.pokemon.destroy({
     where: {
       name: req.params.id
     }
