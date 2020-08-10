@@ -39,6 +39,21 @@ router.get('/:id', async (req, res) => {
   })
 })
 
+// DELETE ROUTE
+router.delete('/:id', async (req, res) => {
+  await db.pokemon.destroy({
+    where: {
+      name: req.params.id
+    }
+  }).then(response => {
+    res.redirect('/pokemon')
+  }).catch(err => {
+    res.render('error')
+  })
+})
+
+module.exports = router;
+
 // delete route
 // router.get('/delete/:id', async (req, res) => {
 //   let pokeID = req.params.id;
@@ -55,16 +70,3 @@ router.get('/:id', async (req, res) => {
 // })
 
 // need to use method override
-router.delete('/:id', async (req, res) => {
-   await db.pokemon.destroy({
-    where: {
-      name: req.params.id
-    }
-  }).then(response => {
-    res.redirect('/pokemon')
-  }).catch(err => {
-    res.render('error')
-  })
-})
-
-module.exports = router;
