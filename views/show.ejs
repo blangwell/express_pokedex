@@ -26,3 +26,8 @@
 
 <!-- base stat for loop -->
 <!-- cant use DOM in node. document is only browser side! -->
+
+<form method="POST" action="/pokemon/<%= pokemon.name %>?_method=DELETE">
+    <input hidden type="text" name="name" value="<%= pokemon.name %>">
+    <button class="btn btn-primary blue darken-2" type="submit">Delete from Favorites DELETE ROUTE</button>
+  </form>

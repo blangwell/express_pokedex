@@ -4,6 +4,8 @@ const axios = require('axios');
 const ejsLayouts = require('express-ejs-layouts');
 const app = express();
 const router = express.Router();  
+const methodOverride = require('method-override');
+
 const port = process.env.PORT || 3000;
 
 app.use(require('morgan')('dev'));
@@ -12,6 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(ejsLayouts);
 // public or static, use public because of public dir
 app.use(express.static('public')) 
+app.use(methodOverride('_method'))
 
 // GET - main index of site
 // pull pokemon from API via axios request axios.get()

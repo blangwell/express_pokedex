@@ -3,7 +3,6 @@ const router = express.Router();
 const db = require('../models');
 const axios = require('axios');
 
-
 // GET /pokemon - return a page with favorited Pokemon
 router.get('/', async (req, res) => {
   // TODO: Get all records from the DB and render to view
@@ -32,7 +31,7 @@ router.get('/:id', async (req, res) => {
   let pokeID = req.params.id;
   // const getPokemon = await db.pokemon.findAll();
   let pokeURL = `http://pokeapi.co/api/v2/pokemon/${pokeID}`
-  axios.get(pokeURL).then(response => {
+  axios.get(pokeURL).then(response => { 
     let pokemon= response.data;
     res.render('show', {pokemon: pokemon})
   }).catch(err => {
@@ -41,19 +40,31 @@ router.get('/:id', async (req, res) => {
 })
 
 // delete route
-router.get('/delete/:id', async (req, res) => {
-  let pokeID = req.params.id;
-  await db.pokemon.destroy({
+// router.get('/delete/:id', async (req, res) => {
+//   let pokeID = req.params.id;
+//   await db.pokemon.destroy({
+//     where: {
+//       name: pokeID
+//     }
+//   }).then(p => {
+//     console.log('destroyed: ', pokeID);
+//     res.redirect('/');
+//   }).catch(err => {
+//     console.log('error occurred : ', err);
+//   })
+// })
+
+// need to use method override
+router.delete('/:id', async (req, res) => {
+   await db.pokemon.destroy({
     where: {
-      name: pokeID
+      name: req.params.id
     }
-  }).then(p => {
-    console.log('destroyed: ', pokeID);
-    res.redirect('/');
+  }).then(response => {
+    res.redirect('/pokemon')
   }).catch(err => {
-    console.log('error occurred : ', err);
+    res.render('error')
   })
 })
-
 
 module.exports = router;
