@@ -27,25 +27,25 @@ router.post('/', async (req, res) => {
   res.redirect('/pokemon')
 });
 
-// i need more explaination here 
 router.get('/:id', async (req, res) => {
-  // to access /:name
+  // to access the parameters at /:id
   let pokeID = req.params.id;
   // const getPokemon = await db.pokemon.findAll();
   let pokeURL = `http://pokeapi.co/api/v2/pokemon/${pokeID}`
   axios.get(pokeURL).then(response => {
-    let pokemon = response.data;
+    let pokemon= response.data;
     res.render('show', {pokemon: pokemon})
   }).catch(err => {
     console.log(err);
   })
 })
 
+// delete route
 router.get('/delete/:id', async (req, res) => {
   let pokeID = req.params.id;
   await db.pokemon.destroy({
     where: {
-      name: pokeID.toString()
+      name: pokeID
     }
   }).then(p => {
     console.log('destroyed: ', pokeID);
